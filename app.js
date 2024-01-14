@@ -1,8 +1,16 @@
 require('dotenv').config()
 const path = require('path');
 const express = require('express')
+const mongoose = require('mongoose');
 const app = express()
 const port = process.env.PORT || 3000
+
+async function main() {
+    const uri = process.env.MONGODB_URI;
+    await mongoose.connect(uri);
+}
+
+main().catch((err) => console.log(err));
 
 const indexRouter = require('./route/index');
 const inventoryRouter = require('./route/inventory');
@@ -17,6 +25,7 @@ app.set("view engine", "ejs");
 // without this, req.body will be null
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+
 
 // serve static files .css and .js
 app.use(express.static(path.join(__dirname, "public")));

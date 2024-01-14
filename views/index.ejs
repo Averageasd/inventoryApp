@@ -7,8 +7,27 @@
     <title>inventory</title>
 </head>
 <body>
-<a href="/inventory/item">See all items</a>
-<a href="/inventory/category">See all category</a>
-<h1>All items</h1>
+<header>
+    <%- include('./partials/nav'); %>
+</header>
+<main>
+    <h1>All items</h1>
+    <ul>
+        <% items.forEach(function(item){ %>
+            <li>
+                <form method="post" action="/inventory/item/delete/<%= item._id %>">
+                    <input type="hidden" name="item_id" value=<%= item._id %> />
+                    <div><%= item.item_name %></div>
+                    <div><%= item.description %></div>
+                    <div>Item price: <%= item.price %></div>
+                    <div>Item quantity: <%= item.quantity %></div>
+                    <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id%>">delete</button>
+                    <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update</button>
+                </form>
+            </li>
+            <br>
+        <% }); %>
+    </ul>
+</main>
 </body>
 </html>
