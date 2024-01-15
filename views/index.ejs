@@ -16,13 +16,18 @@
         <% items.forEach(function(item){ %>
             <li>
                 <form method="post" action="/inventory/item/delete/<%= item._id %>">
-                    <input type="hidden" name="item_id" value=<%= item._id %> />
-                    <div><%= item.item_name %></div>
-                    <div><%= item.description %></div>
-                    <div>Item price: <%= item.price %></div>
-                    <div>Item quantity: <%= item.quantity %></div>
-                    <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id%>">delete</button>
-                    <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update</button>
+                    <input type="hidden" name="item_id" value=<%= item._id %>/>
+                    <p><%= item.item_name %></p>
+                    <p><%= item.description %></p>
+                    <%if (item.category){%>
+                        <p>Category: <%= item.category.category_name%> </p>
+                    <%}%>
+                    <p>Item price: <%= item.price %></p>
+                    <p>Item quantity: <%= item.quantity %></p>
+                    <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
+                    </button>
+                    <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
+                    </button>
                 </form>
             </li>
             <br>

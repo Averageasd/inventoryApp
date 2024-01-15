@@ -11,17 +11,19 @@
     <%- include ('./partials/nav'); %>
 </header>
 <main>
-    <form method="post" action="/inventory/category/create">
+    <form method="post" action="/inventory/category/update/<%= category._id %>">
         <label for="category-name">
             Category name
         </label>
         <br>
-        <input type="text" id="category-name" name="category_name" required minlength="3" maxlength="30"><br>
+        <input type="text" id="category-name" value="<%= category.category_name %>" name="category_name" required
+               minlength="3" maxlength="30"/><br>
         <label for="category-desc">
             Category description
         </label>
         <br>
-        <textarea id="category-desc" name="category_desc" required minlength="3" maxlength="100"></textarea><br>
+        <textarea id="category-desc" name="category_desc" required minlength="3"
+                  maxlength="100"><%= category.description %></textarea><br>
         <button type="submit">Submit</button>
     </form>
 </main>

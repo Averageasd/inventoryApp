@@ -22,6 +22,17 @@
         </label>
         <br>
         <textarea id="item-desc" name="item_desc" required minlength="3" maxlength="100"></textarea><br>
+        <label for="item-category">
+            Item description
+        </label>
+        <br>
+        <select id="item-category" name="category">
+            <option value="">None</option>
+            <% for (const category of categories){ %>
+                <option value=<%= category._id %>><%= category.category_name %> </option>
+            <% } %>
+        </select>
+        <br>
         <label for="item-price">
             Item price
         </label>

@@ -16,7 +16,7 @@
         <% categories.forEach(function(category){ %>
             <li>
                 <form method="post" action="/inventory/category/delete/<%= category._id %>">
-                    <input type="hidden" name="item_id" value=<%= category._id %>/>
+                    <input type="hidden" name="category_id" value=<%= category._id %> />
                     <div><%= category.category_name %></div>
                     <div><%= category.description %></div>
                     <button type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
