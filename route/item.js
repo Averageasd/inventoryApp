@@ -12,7 +12,6 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }));
 
 router.post("/create", asyncHandler(async (req, res, next) => {
-    console.log(req.body);
     const newItem = new itemModel({
         item_name: req.body.item_name,
         description: req.body.item_desc,
@@ -28,13 +27,25 @@ router.get('/create', asyncHandler(async (req, res, next) => {
 }));
 
 router.post("/delete/:id", asyncHandler(async (req, res, next) => {
-    console.log(req.body.item_id);
     await itemModel.findByIdAndDelete(req.body.item_id).exec();
     res.redirect("/");
 }));
 
-router.get("/update/:id", (req,res,next)=>{
-   console.log('now update item');
-});
+router.get("/update/:id", asyncHandler(async (req, res, next) => {
+
+    const item = await itemModel.findById(req.params.id).exec();
+    res.render("item_update_form", {item: item});
+}));
+
+router.post("/update/:id", asyncHandler(async (req, res, next) => {
+    const updatedItem = {
+        item_name: req.body.item_name,
+        description: req.body.item_desc,
+        price: req.body.item_price,
+        quantity: req.body.item_quantity
+    };
+    await itemModel.findByIdAndUpdate(req.body.item_id, updatedItem).exec();
+    res.redirect("/");
+}));
 
 module.exports = router;

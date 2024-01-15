@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inventory</title>
+</head>
+<body>
+<header>
+    <%- include ('./partials/nav'); %>
+</header>
+<main>
+    <form method="post" action="/inventory/item/update/:<%= item._id %>">
+        <input type="hidden" name="item_id" value=<%= item._id %> />
+        <label for="item-name">
+            Item name
+        </label>
+        <br>
+        <input type="text" id="item-name" name="item_name" value="<%= item.item_name %>" required minlength="3"
+               maxlength="30"><br>
+        <label for="item-desc">
+            Item description
+        </label>
+        <br>
+        <textarea id="item-desc" name="item_desc" required minlength="3"
+                  maxlength="100"><%= item.description %></textarea><br>
+        <label for="item-price">
+            Item price
+        </label>
+        <br>
+        <input type="number" id="item-price" value=<%= item.price %> name="item_price" placeholder="[5,100]" required
+               min="5" max="100"><br>
+        <label for="item-qty">
+            Item quantity
+        </label>
+        <br>
+        <input type="number" id="item-qty" value=<%= item.quantity %> name="item_quantity" placeholder="[0,10]" required
+               min="0" max="10"><br>
+        <button type="submit">Submit</button>
+    </form>
+</main>
+
+</body>
+</html>
