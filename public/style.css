@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #252323;
+    --secondary-color: #ffffff;
+    --accent-color: #df2935;
+
+    --fw-bold: 900;
+
+    --h1-font-size: 2rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.125rem;
+
+    --btn-color: var(--secondary-color);
+    --btn-bg-color: var(--primary-color);
+
+    --grid-spacer: 1rem;
+
+    /*--card-fs: 1.5rem;*/
+    --card-padding: 0.5rem;
+    --card-box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+
+.card {
+    padding: var(--card-padding);
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--secondary-color);
+}
+
+.container {
+    margin: 0 auto;
+    width: min(90%, 1125px);
+}
+
+.grid {
+    display: grid;
+    gap: var(--grid-spacer);
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}

@@ -25,10 +25,9 @@ app.set("view engine", "ejs");
 // without this, req.body will be null
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
-
 // serve static files .css and .js
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "/public")));
+
 app.use('/', indexRouter);
 app.use('/inventory', inventoryRouter);
 app.use('/inventory/item', itemRouter);

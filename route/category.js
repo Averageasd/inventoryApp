@@ -2,6 +2,7 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
 const categoryModel = require('../model/categoryModel');
+const itemModel = require('../model/itemModel');
 
 
 // view all categories in inventory
@@ -46,7 +47,9 @@ router.post('/update/:id', asyncHandler(async (req, res, next) => {
 
 router.get('/:id', asyncHandler(async (req, res, next) => {
     const category = await categoryModel.findById(req.params.id).exec();
-    res.render("category_detail", {category: category});
+    const itemsWithCategoryCount = await itemModel.where({'category': req.params.id}).countDocuments();
+    console.log(itemsWithCategoryCount);
+    res.render("category_detail", {category: category, itemsWithCategoryCount: itemsWithCategoryCount});
 }));
 
 

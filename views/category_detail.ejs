@@ -11,10 +11,18 @@
     <%- include('./partials/nav'); %>
 </header>
 <main>
-    <div>
+    <form>
+        <input type="hidden" name="category_id" value=<%= category._id %>/>
         <h3><%= category.category_name %></h3>
         <p><%= category.description %></p>
-    </div>
+        <p>Number of items belong to this category: <%= itemsWithCategoryCount %></p>
+        <button type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
+            delete
+        </button>
+        <button type="submit" formmethod="get" formaction="/inventory/category/update/<%= category._id %>">
+            update
+        </button>
+    </form>
 </main>
 </body>
 </html>

@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css" type="text/css">
     <title>inventory</title>
 </head>
 <body>
 <header>
     <%- include('./partials/nav'); %>
 </header>
-<main>
+<main class="container">
     <h1>All items</h1>
-    <ul>
+    <ul class="grid">
         <% items.forEach(function(item){ %>
-            <li>
-                <form method="post" action="/inventory/item/delete/<%= item._id %>">
+            <li class="card">
+                <form>
                     <input type="hidden" name="item_id" value=<%= item._id %>/>
                     <p><%= item.item_name %></p>
                     <p><%= item.description %></p>
-                    <%if (item.category){%>
-                        <p>Category: <%= item.category.category_name%> </p>
-                    <%}%>
+                    <% if (item.category){ %>
+                        <p>Category: <%= item.category.category_name %> </p>
+                    <% } %>
                     <p>Item price: <%= item.price %></p>
                     <p>Item quantity: <%= item.quantity %></p>
+                    <button type="submit" formmethod="get" formaction="/inventory/item/<%= item._id %>">view
+                    </button>
                     <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
                     </button>
                     <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
                     </button>
                 </form>
             </li>
-            <br>
         <% }); %>
     </ul>
 </main>

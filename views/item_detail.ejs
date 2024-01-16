@@ -11,13 +11,20 @@
     <%- include('./partials/nav'); %>
 </header>
 <main>
-    <div>
+    <form>
+        <input type="hidden" name="item_id" value=<%= item._id %> />
         <h3><%= item.item_name %></h3>
         <p><%= item.description %></p>
-        <p>Category: <%= item.category.category_name %></p>
+        <% if (item.category){ %>
+            <p>Category: <%= item.category.category_name %></p>
+        <% } %>
         <p>Item price: <%= item.price %></p>
         <p>Item quantity: <%= item.quantity %></p>
-    </div>
+        <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
+        </button>
+        <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
+        </button>
+    </form>
 </main>
 </body>
 </html>

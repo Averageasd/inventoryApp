@@ -15,10 +15,13 @@
     <ul>
         <% categories.forEach(function(category){ %>
             <li>
-                <form method="post" action="/inventory/category/delete/<%= category._id %>">
+                <form>
                     <input type="hidden" name="category_id" value=<%= category._id %> />
-                    <div><%= category.category_name %></div>
-                    <div><%= category.description %></div>
+                    <p><%= category.category_name %></p>
+                    <p><%= category.description %></p>
+                    <button type="submit" formmethod="get" formaction="/inventory/category/<%= category._id %>">
+                        view
+                    </button>
                     <button type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
                         delete
                     </button>
