@@ -1,0 +1,7 @@
+.detail-section.item-number > p {
+    font-size: var(--body-font-size-large);
+}
+
+.detail-section.item-number span {
+    font-weight: var(--fw-bold);
+}

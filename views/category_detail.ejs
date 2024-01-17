@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>inventory</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/detail.css" type="text/css">
+    <link rel="stylesheet" href="/category-detail.css" type="text/css">
 </head>
 <body>
 <header>
     <%- include('./partials/nav'); %>
 </header>
-<main>
+<main class="container">
     <form>
-        <input type="hidden" name="category_id" value=<%= category._id %>/>
-        <h3><%= category.category_name %></h3>
-        <p><%= category.description %></p>
-        <p>Number of items belong to this category: <%= itemsWithCategoryCount %></p>
-        <button type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
-            delete
-        </button>
-        <button type="submit" formmethod="get" formaction="/inventory/category/update/<%= category._id %>">
-            update
-        </button>
+        <input type="hidden" name="category_id" value=<%= category._id %> />
+        <h1><%= category.category_name %></h1>
+        <div class="detail-section about">
+            <p><%= category.description %></p>
+        </div>
+        <div class="detail-section item-number">
+            <p><span>Number of items belong to this category:</span> <%= itemsWithCategoryCount %></p>
+        </div>
+        <div class="detail-section button-container">
+            <button type="submit" formmethod="get" formaction="/inventory/category/update/<%= category._id %>">
+                update
+            </button>
+            <button class="btn-delete" type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
+                delete
+            </button>
+        </div>
     </form>
 </main>
 </body>

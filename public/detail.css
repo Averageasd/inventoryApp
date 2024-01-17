@@ -1,0 +1,13 @@
+.detail-section {
+    margin-top: 1rem;
+}
+
+.detail-section.about {
+    max-width: 750px;
+}
+
+.detail-section.button-container > button {
+    padding: 0.5rem;
+    margin: 0.25em 0;
+    width: min(100%, 15rem);
+}

@@ -5,61 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>inventory</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/form.css" type="text/css">
 </head>
 <body>
 <header>
     <%- include ('./partials/nav'); %>
 </header>
-<main>
-    <form method="post" action="/inventory/item/update/<%= item._id %>">
+<main class="container">
+    <form class="form" method="post" action="/inventory/item/update/<%= item._id %>">
+        <h2>Update an item</h2>
         <input type="hidden" name="item_id" value=<%= item._id %> />
-        <label for="item-name">
-            Item name
-        </label>
-        <br>
-        <input type="text" id="item-name" name="item_name" value="<%= item.item_name %>" required minlength="3"
-               maxlength="30"><br>
-        <label for="item-desc">
-            Item description
-        </label>
-        <br>
-        <textarea id="item-desc" name="item_desc" required minlength="3"
-                  maxlength="100"><%= item.description %></textarea><br>
-        <label for="category">
-            Category
-        </label>
-        <br>
-        <select name="category" id="category">
-            <% if (item.category){ %>
-                <% for (const category of categories){ %>
-                    <% if (category._id === item.category._id){ %>
-                        <option selected="selected" value=<%= category._id %>> <%= category.category_name %></option>
-                    <% }else{ %>
+        <div>
+            <label for="item-name">
+                Item name
+            </label>
+            <br>
+            <input type="text" id="item-name" name="item_name" value="<%= item.item_name %>" required minlength="3"
+                   maxlength="30">
+        </div>
+        <div>
+            <label for="item-desc">
+                Item description
+            </label>
+            <br>
+            <textarea id="item-desc" name="item_desc" required minlength="3"
+                      maxlength="500" rows="5"><%= item.description %></textarea>
+        </div>
+        <div>
+            <label for="category">
+                Category
+            </label>
+            <br>
+            <select name="category" id="category">
+                <% if (item.category){ %>
+                    <% for (const category of categories){ %>
+                        <% if (category._id === item.category._id){ %>
+                            <option selected="selected"
+                                    value=<%= category._id %>> <%= category.category_name %></option>
+                        <% }else{ %>
+                            <option value=<%= category._id %>> <%= category.category_name %></option>
+                        <% } %>
+                    <% } %>
+                    <option value="">None</option>
+                <% }else{ %>
+                    <option value="">None</option>
+                    <% for (const category of categories){ %>
                         <option value=<%= category._id %>> <%= category.category_name %></option>
                     <% } %>
                 <% } %>
-                <option value="">None</option>
-            <% }else{ %>
-                <option value="">None</option>
-                <% for (const category of categories){ %>
-                    <option value=<%= category._id %>> <%= category.category_name %></option>
-                <% } %>
-            <% } %>
-        </select>
-        <br>
-        <label for="item-price">
-            Item price
-        </label>
-        <br>
-        <input type="number" id="item-price" value=<%= item.price %> name="item_price" placeholder="[5,100]" required
-               min="5" max="100"><br>
-        <label for="item-qty">
-            Item quantity
-        </label>
-        <br>
-        <input type="number" id="item-qty" value=<%= item.quantity %> name="item_quantity" placeholder="[0,10]" required
-               min="0" max="10"><br>
-        <button type="submit">Submit</button>
+            </select>
+        </div>
+        <div>
+            <label for="item-price">
+                Item price
+            </label>
+            <br>
+            <input type="number" id="item-price" value=<%= item.price %> name="item_price" placeholder="[5,100]"
+                   required
+                   min="5" max="100"/>
+        </div>
+        <div>
+            <label for="item-qty">
+                Item quantity
+            </label>
+            <br>
+            <input type="number" id="item-qty" value=<%= item.quantity %> name="item_quantity" placeholder="[0,10]"
+                   required
+                   min="0" max="10"/>
+        </div>
+        <button class="submit" type="submit">Submit</button>
     </form>
 </main>
 

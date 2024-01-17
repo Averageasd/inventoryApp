@@ -1,0 +1,7 @@
+.detail-section.quantity > p, .detail-section.category > p {
+    font-size: var(--body-font-size-large);
+}
+
+.detail-section.quantity span, .detail-section.category span {
+    font-weight: bold;
+}

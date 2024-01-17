@@ -1,0 +1,16 @@
+/**
+button
+ */
+button {
+    border: none;
+    color: var(--btn-color);
+    padding: var(--btn-padding);
+    background-color: var(--btn-bg-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+}
+
+.btn-delete {
+    --btn-bg-color: var(--accent-color);
+    background-color: var(--btn-bg-color);
+}

@@ -5,32 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>inventory</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/card.css" type="text/css">
 </head>
 <body>
 <header>
     <%- include('./partials/nav'); %>
 </header>
-<main>
+<main class="container">
     <h1>All categories</h1>
-    <ul>
+    <ul class="grid">
         <% categories.forEach(function(category){ %>
             <li>
-                <form>
+                <form class="card">
                     <input type="hidden" name="category_id" value=<%= category._id %> />
-                    <p><%= category.category_name %></p>
-                    <p><%= category.description %></p>
-                    <button type="submit" formmethod="get" formaction="/inventory/category/<%= category._id %>">
-                        view
-                    </button>
-                    <button type="submit" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
-                        delete
-                    </button>
-                    <button type="submit" formmethod="get" formaction="/inventory/category/update/<%= category._id %>">
-                        update
-                    </button>
+                    <h3><%= category.category_name %></h3>
+                    <div class="card-body-section">
+                        <div>
+                            <p class="card-section-title">Description</p>
+                            <p class="card-description text-overflow-handle"><%= category.description %></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" formmethod="get" formaction="/inventory/category/<%= category._id %>">
+                            view
+                        </button>
+                        <button type="submit" formmethod="get" formaction="/inventory/category/update/<%= category._id %>">
+                            update
+                        </button>
+                        <button type="submit" class="btn-delete" formmethod="post" formaction="/inventory/category/delete/<%= category._id %>">
+                            delete
+                        </button>
+                    </div>
+
                 </form>
             </li>
-            <br>
         <% }); %>
     </ul>
 </main>

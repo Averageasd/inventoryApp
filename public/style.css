@@ -1,3 +1,6 @@
+/**
+global colors
+ */
 :root {
     --primary-color: #252323;
     --secondary-color: #ffffff;
@@ -11,6 +14,8 @@
     --h3-font-size: 1.25rem;
     --body-font-size-large: 1.125rem;
 
+    --input-padding: 0.5rem;
+
     --btn-color: var(--secondary-color);
     --btn-bg-color: var(--primary-color);
     --btn-padding: 0.25rem 0.5rem;
@@ -21,17 +26,35 @@
     --card-padding: 1rem;
     --card-color: var(--primary-color);
     --card-box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+
+    --form-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
 }
 
+/**
+global style
+ */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/**
-font size
- */
+body {
+    padding-bottom: 1rem;
+}
+
+input[type="color"]::--moz-color-swatch {
+    border: none;
+}
+
+input, textarea, select {
+    display: block;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: var(--border-radius);
+    padding: var(--input-padding);
+}
 h1, h2, h3 {
     color: var(--primary-color);
 }
@@ -54,55 +77,6 @@ ul {
     list-style: none;
 }
 
-header {
-    background-color: var(--btn-bg-color);
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.nav {
-    height: auto;
-}
-
-.link-container {
-    display: flex;
-    gap: 1rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.navbar-link {
-    text-decoration: none;
-    color: var(--secondary-color);
-    cursor: pointer;
-    font-size: var(--body-font-size-large);
-}
-
-.navbar-link:hover {
-    text-decoration: underline;
-    text-underline: var(--secondary-color);
-}
-
-/**
-button
- */
-
-button {
-    border: none;
-    color: var(--btn-color);
-    padding: var(--btn-padding);
-    background-color: var(--btn-bg-color);
-    cursor: pointer;
-    border-radius: var(--border-radius);
-}
-
-.btn-delete {
-    --btn-bg-color: var(--accent-color);
-    background-color: var(--btn-bg-color);
-}
-
 /**
 layout
  */
@@ -114,51 +88,7 @@ layout
 
 .grid {
     display: grid;
-    justify-self: center;
     gap: var(--grid-spacer);
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-auto-rows: 1fr;
-}
-
-
-/**
-card
- */
-.card {
-    display: flex;
-    flex-direction: column;
-    color: var(--card-color);
-    padding: var(--card-padding);
-    box-shadow: var(--card-box-shadow);
-    background-color: var(--secondary-color);
-    gap: 0.9rem;
-    height: 100%;
-}
-
-.card-title {
-    font-weight: var(--fw-bold);
-}
-
-.card-section-title {
-    font-weight: var(--fw-medium);
-}
-
-.text-overflow-handle {
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-}
-
-.card-body-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-}
-
-.card-description {
-    -webkit-line-clamp: 5;
 }

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/card.css" type="text/css">
     <title>inventory</title>
 </head>
 <body>
@@ -17,7 +20,7 @@
         <% items.forEach(function(item){ %>
             <li>
                 <form class="card">
-                    <input type="hidden" name="item_id" value=<%= item._id %>/>
+                    <input type="hidden" name="item_id" value=<%= item._id%> />
                     <h3 class="card-title"><%= item.item_name %></h3>
                     <div class="card-body-section">
                         <div>
@@ -40,13 +43,11 @@
                         </div>
                     </div>
                     <div>
-                        <button type="submit" formmethod="get" formaction="/inventory/item/<%= item._id %>">view
-                        </button>
+                        <button type="submit" formmethod="get" formaction="/inventory/item/<%= item._id %>">view</button>
                         <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">
                             update
                         </button>
-                        <button class="btn-delete" type="submit" formmethod="post"
-                                formaction="/inventory/item/delete/<%= item._id %>">
+                        <button class="btn-delete" type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">
                             delete
                         </button>
                     </div>
@@ -55,5 +56,7 @@
         <% }); %>
     </ul>
 </main>
+<script src="/NavController.js"></script>
 </body>
+
 </html>

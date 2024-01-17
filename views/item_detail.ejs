@@ -5,25 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>inventory</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/detail.css" type="text/css">
+    <link rel="stylesheet" href="/item-detail.css" type="text/css">
 </head>
 <body>
 <header>
     <%- include('./partials/nav'); %>
 </header>
-<main>
+<main class="container">
     <form>
         <input type="hidden" name="item_id" value=<%= item._id %> />
-        <h3><%= item.item_name %></h3>
-        <p><%= item.description %></p>
+        <h1><%= item.item_name %></h1>
+        <div class="detail-section about">
+            <p><%= item.description %></p>
+        </div>
+
+        <div class="detail-section price">
+            <h2>$<%= item.price %></h2>
+        </div>
+
         <% if (item.category){ %>
-            <p>Category: <%= item.category.category_name %></p>
+            <div class="detail-section category">
+                <p><span>Category: </span><%= item.category.category_name %></p>
+            </div>
         <% } %>
-        <p>Item price: <%= item.price %></p>
-        <p>Item quantity: <%= item.quantity %></p>
-        <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
-        </button>
-        <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
-        </button>
+
+        <div class="detail-section quantity">
+            <p><span>In stock: </span><%= item.quantity %></p>
+        </div>
+        <div class="detail-section button-container">
+            <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
+            </button>
+            <button class="btn-delete" type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
+            </button>
+        </div>
+
     </form>
 </main>
 </body>

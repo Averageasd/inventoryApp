@@ -1,0 +1,41 @@
+/**
+card
+ */
+.card {
+    display: flex;
+    flex-direction: column;
+    color: var(--card-color);
+    padding: var(--card-padding);
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--secondary-color);
+    gap: 0.9rem;
+    height: 100%;
+}
+
+.card-title {
+    font-weight: var(--fw-bold);
+}
+
+.card-section-title {
+    font-weight: var(--fw-medium);
+}
+
+.text-overflow-handle {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.card-body-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.card-description {
+    -webkit-line-clamp: 5;
+}

@@ -5,26 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>create a new category</title>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="/nav.css" type="text/css">
+    <link rel="stylesheet" href="/button.css" type="text/css">
+    <link rel="stylesheet" href="/form.css" type="text/css">
 </head>
 <body>
 <header>
     <%- include ('./partials/nav'); %>
 </header>
-<main>
-    <form method="post" action="/inventory/category/update/<%= category._id %>">
-        <label for="category-name">
-            Category name
-        </label>
-        <br>
-        <input type="text" id="category-name" value="<%= category.category_name %>" name="category_name" required
-               minlength="3" maxlength="30"/><br>
-        <label for="category-desc">
-            Category description
-        </label>
-        <br>
-        <textarea id="category-desc" name="category_desc" required minlength="3"
-                  maxlength="100"><%= category.description %></textarea><br>
-        <button type="submit">Submit</button>
+<main class="container">
+    <form class="form" method="post" action="/inventory/category/update/<%= category._id %>">
+        <h2>Update a category</h2>
+        <div>
+            <label for="category-name">
+                Category name
+            </label>
+            <br>
+            <input type="text" id="category-name" value="<%= category.category_name %>" name="category_name" required
+                   minlength="3" maxlength="30"/>
+        </div>
+        <div>
+            <label for="category-desc">
+                Category description
+            </label>
+            <br>
+            <textarea rows="5" id="category-desc" name="category_desc" required minlength="3"
+                      maxlength="500"><%= category.description %></textarea>
+        </div>
+        <button class="submit" type="submit">Submit</button>
     </form>
 </main>
 
