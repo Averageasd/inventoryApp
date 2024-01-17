@@ -15,22 +15,41 @@
     <h1>All items</h1>
     <ul class="grid">
         <% items.forEach(function(item){ %>
-            <li class="card">
-                <form>
+            <li>
+                <form class="card">
                     <input type="hidden" name="item_id" value=<%= item._id %>/>
-                    <p><%= item.item_name %></p>
-                    <p><%= item.description %></p>
-                    <% if (item.category){ %>
-                        <p>Category: <%= item.category.category_name %> </p>
-                    <% } %>
-                    <p>Item price: <%= item.price %></p>
-                    <p>Item quantity: <%= item.quantity %></p>
-                    <button type="submit" formmethod="get" formaction="/inventory/item/<%= item._id %>">view
-                    </button>
-                    <button type="submit" formmethod="post" formaction="/inventory/item/delete/<%= item._id %>">delete
-                    </button>
-                    <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">update
-                    </button>
+                    <h3 class="card-title"><%= item.item_name %></h3>
+                    <div class="card-body-section">
+                        <div>
+                            <p class="card-section-title">Description</p>
+                            <p class="card-description text-overflow-handle"><%= item.description %></p>
+                        </div>
+                        <% if (item.category){ %>
+                            <div>
+                                <p class="card-section-title">Category</p>
+                                <p> <%= item.category.category_name %> </p>
+                            </div>
+                        <% } %>
+                        <div>
+                            <p class="card-section-title">Item price: </p>
+                            <p><%= item.price %></p>
+                        </div>
+                        <div>
+                            <p class="card-section-title">Item quantity: </p>
+                            <p><%= item.quantity %></p>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" formmethod="get" formaction="/inventory/item/<%= item._id %>">view
+                        </button>
+                        <button type="submit" formmethod="get" formaction="/inventory/item/update/<%= item._id %>">
+                            update
+                        </button>
+                        <button class="btn-delete" type="submit" formmethod="post"
+                                formaction="/inventory/item/delete/<%= item._id %>">
+                            delete
+                        </button>
+                    </div>
                 </form>
             </li>
         <% }); %>
