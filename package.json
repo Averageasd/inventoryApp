@@ -2,9 +2,9 @@
   "name": "inventory-management",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "api/index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon api/index.js"
   },
   "author": "",
   "license": "ISC",
